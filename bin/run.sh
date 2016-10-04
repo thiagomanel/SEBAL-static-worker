@@ -32,8 +32,11 @@ if [ "$IMAGE_NAME" = "LT52150651984361CUB00" ]; then
 	# Global variables
 	WORKER_RUN_LOG_FILE=/var/log/static-worker-run.log
 	WORKER_RUN_LOG_MESSAGE="$(date):: Going to stop script with error"
+	
+	sudo touch $WORKER_RUN_LOG_FILE
+	sudo chmod 777 $WORKER_RUN_LOG_FILE
 
-	sudo echo "$WORKER_RUN_LOG_MESSAGE" >> "$WORKER_RUN_LOG_FILE"
+	echo "$WORKER_RUN_LOG_MESSAGE" >> $WORKER_RUN_LOG_FILE
 
 	exit 0
 fi
