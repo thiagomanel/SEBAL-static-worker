@@ -19,21 +19,21 @@ IMAGE_REPOSITORY_URL="http://www2.lsd.ufcg.edu.br/~esdras/LT52150651984361CUB00-
 
 if [ "$IMAGE_NAME" = "LT52150651984361CUB00" ]; then
 
-	ACTUAL_FILE=$OUTPUT_IMAGE_DIR"/"LT52150651984361CUB00-output.tar.gz
+	ACTUAL_FILE=$RESULTS_DIR_PATH"/"LT52150651984361CUB00-output.tar.gz
 
 	echo "Getting file $IMAGE_REPOSITORY_URL to $ACTUAL_FILE"
-	wget $IMAGE_REPOSITORY_URL -O $ACTUAL_FILE
+	sudo wget $IMAGE_REPOSITORY_URL -O $ACTUAL_FILE
 
 	echo "Extracting: tar -xvzf $ACTUAL_FILE $OUTPUT_IMAGE_DIR"
-	tar -xvf $ACTUAL_FILE -C $RESULTS_DIR_PATH
+	sudo tar -xvf $ACTUAL_FILE -C $RESULTS_DIR_PATH
 
-	rm -rf $ACTUAL_FILE
+	sudo rm -rf $ACTUAL_FILE
 
 	# Global variables
 	WORKER_RUN_LOG_FILE=/var/log/static-worker-run.log
 	WORKER_RUN_LOG_MESSAGE="$(date):: Going to stop script with error"
 
-	echo "$WORKER_RUN_LOG_MESSAGE" >> "$WORKER_RUN_LOG_FILE"
+	sudo echo "$WORKER_RUN_LOG_MESSAGE" >> "$WORKER_RUN_LOG_FILE"
 
 	exit 0
 fi
